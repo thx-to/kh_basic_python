@@ -1,0 +1,114 @@
+# 커피 메뉴 만들기
+# [1] 메뉴 보기 [2] 메뉴 조회 [3] 메뉴 추가 [4] 메뉴 삭제 [5] 파일 불러오기 [6] 파일 저장하기 [7] 종료
+# 기본 메뉴 만들기
+# 딕셔너리에 키, 밸류 이외에 다른 객체를 넣을 수도 있음
+# 딕셔너리에 키는 중복될 수 없음
+
+
+"""
+import json
+
+# 메뉴 생성
+menu = {
+    "Americano":["Coffee", 2000, "기본 커피 입니다."],
+    "Espresso":["Coffee", 2500, "진한 커피 입니다."],
+    "Latte": ["Coffee", 4000, "우유가 들어 있는 커피 입니다."],
+    "ColdBrew": ["Coffee", 4500, "연유가 들어 있는 커피 입니다."],
+    "GreenTea": ["Tea", 4500, "녹차 입니다."],
+    "BlackTea": ["Tea", 4500, "홍차 입니다."],
+    "MilkTea": ["Tea", 4000, "우유가 포함된 차 입니다."],
+    "PeachAde": ["Ade", 5000, "복숭아 에이드 입니다."],
+    "GreenAde": ["Ade", 5000, "포도 에이드 입니다."],
+    "LemonAde": ["Ade", 4500, "레몬 에이드 입니다."]
+}
+
+
+# 번외)
+file_name = "menu.json"
+
+# 파일에서 메뉴를 읽어오는 함수
+def load_menu():
+    try:
+        with open(file_name, "r", encoding = "utf-8") as file:  # 한글이라 utf-8
+            return json.load(file)  # json 형태로 파일을 읽어냄
+    except FileNotFoundError: # 예외가 발생한 조건에 따라 파일이 없다면
+        print("해당 파일이 없습니다.")
+    except json.JSONDecodeError: # 디코딩 에러가 발생한다면
+        print("JSON 디코딩 실패")
+
+
+# 파일에 저장하는 함수
+def save_menu():
+    with open(file_name, "w", encoding = "utf-8") as file :
+        json.dump(menu, file, ensure_ascii = False, indent = 4) # ASCII 코드가 아님
+
+
+
+# [1] 메뉴 보기 1) 메뉴의 키값으로 돌리기
+
+def print_menu() :
+    for key in menu : # menu를 자동순회하면서 key값을 뽑아내 (메뉴에서 키값을 받자)
+        print(f"{key} : {menu[key]}")
+
+
+# [1] 메뉴 보기 2) 아이템 세트로 돌리기
+
+def print_menu() :
+    for key, value in menu.items() : # for문에서 뒤에 items 넣으면 앞에 key/value 모두 넣어줘야 함 / 출력이 둘 다 되니까
+        print(f"{key} : {value}")
+
+
+# [2] 메뉴 조회(개별 메뉴)
+
+def get_menu(key) :  # key값을 전달받으면 해당하는 커피 이름에 대한 값만 조회
+    if key in menu : # 해당하는 key값이 in이면(메뉴에 있으면)
+        print(menu[key]) # 메뉴에 대해서 key값을 넣어줌
+    else :
+        print("찾는 메뉴가 없습니다.")# 아니면 출력될 문구
+
+
+# [3] 메뉴 추가
+
+def add_menu(key, category, price, desc) : #key, 분류, 가격, 설명
+    if key not in menu : # 해당 key값이 menu에 not in(없으면)이면 추가한다. 해당 key값을 가진 메뉴가 없으면!
+        menu[key] = [category, price, desc] # 하나의 키 값에 카테고리, 가격, 설명부분 추가
+        print(f"{key} 메뉴가 추가되었습니다.")
+    else :
+        print("메뉴가 이미 존재합니다.")
+
+
+# [4] 메뉴 삭제
+
+def del_menu(key) :
+    if key in menu : # 메뉴에 키가 있으면
+        del menu[key] # 해당하는 키를 지워줌
+        print(f"{key} 메뉴가 삭제되었습니다.")
+
+
+while True :
+    print("메뉴를 선택하세요 : ")
+    sel = input("[1] 메뉴 보기 [2] 메뉴 조회 [3] 메뉴 추가 [4] 메뉴 삭제 [5] 파일 불러오기 [6] 파일 저장하기 [7] 종료 : ") # select라는 변수를 만들어줌
+    if sel == "1" : # sel 값을 비교해줌 / 1을 불러주면
+        print_menu()
+    elif sel == "2" :
+        key = input("조회할 메뉴 입력 : ") # 메뉴 이름을 넣어줘야 키값이 동작
+        get_menu(key)
+    elif sel == "3" :
+        key = input("추가할 메뉴 입력 : ") # 추가하고자 하는 메뉴 이름 입력
+        cate = input("분류 입력 : ")
+        price = int(input("가격 입력 : "))
+        desc = input("설명 입력 : ")
+        add_menu(key, cate, price, desc)
+    elif sel == "4" :
+        key = input("삭제할 메뉴 입력 : ")
+        del_menu(key)
+    elif sel == "5" :
+        menu = load_menu() # 한번 json 파일을 저장한 후 불러오면 저장된 json 메뉴 파일을 불러옴
+    elif sel == "6" :
+        save_menu()
+    elif sel == "7" :
+        print("종료합니다.")
+        break
+    else :
+        print("잘못된 입력입니다.")
+"""
