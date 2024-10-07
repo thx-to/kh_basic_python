@@ -1,6 +1,6 @@
 # 1) 파일 정상적으로 있는지 확인해보기
 """
-file_name = "240919_08_스타벅스일일매출.txt"
+file_name = "PYTHON_240919_08_스타벅스일일매출.txt"
 
 with open(file_name, "r", encoding="utf-8") as file :
     for line in file :
@@ -9,7 +9,7 @@ with open(file_name, "r", encoding="utf-8") as file :
 
 # 2) 전체 판매량과 일 평균 판매량 구하기
 """
-file_name = "240919_08_스타벅스일일매출.txt"
+file_name = "PYTHON_240919_08_스타벅스일일매출.txt"
 
 with open(file_name, "r", encoding="utf-8") as file :
     header = file.readline() # 줄바꾸기 한줄기준

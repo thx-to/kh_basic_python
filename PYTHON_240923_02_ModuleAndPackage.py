@@ -87,7 +87,7 @@ def add(a, b) :
 def sub(a, b) :
     return a - b
 
-# 240911_02_비밀번호만들기.py 파일 참고
+# PYTHON_240911_02_비밀번호만들기예제.py 파일 참고
 def password(url):
     my_str = url.replace("http://", "")
     my_str = my_str[:my_str.index(".")]
