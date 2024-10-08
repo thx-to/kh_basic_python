@@ -103,7 +103,7 @@ def main() : # 메뉴를 보여주는 메서드
 
         elif sel == "3" :
             if order.products :
-                print("제품 목록:")
+                print("제품 목록 : ")
                 for product in order.products :
                     print(f"- {product.get_name()} : {product.get_price()}")
             else :
